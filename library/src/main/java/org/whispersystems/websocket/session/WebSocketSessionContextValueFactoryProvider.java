@@ -35,6 +35,7 @@ public class WebSocketSessionContextValueFactoryProvider extends AbstractValueFa
 
     return new AbstractContainerRequestValueFactory<WebSocketSessionContext>() {
 
+      @Override
       public WebSocketSessionContext provide() {
         Principal principal = getContainerRequest().getSecurityContext().getUserPrincipal();
 

@@ -21,6 +21,11 @@ import org.whispersystems.websocket.WebSocketClient;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * websocket session context
+ * 管理session关闭事件
+ * 也可以借助webSocketClient发送消息
+ */
 public class WebSocketSessionContext {
 
   private final List<WebSocketEventListener> closeListeners = new LinkedList<>();

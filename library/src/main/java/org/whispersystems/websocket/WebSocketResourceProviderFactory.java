@@ -57,6 +57,9 @@ import java.util.Set;
 
 import io.dropwizard.jersey.jackson.JacksonMessageBodyProvider;
 
+/**
+ * 建立socket链接前进行用户认证
+ */
 public class WebSocketResourceProviderFactory extends WebSocketServlet implements WebSocketCreator {
 
   private static final Logger logger = LoggerFactory.getLogger(WebSocketResourceProviderFactory.class);
@@ -77,6 +80,12 @@ public class WebSocketResourceProviderFactory extends WebSocketServlet implement
     this.environment.getJerseyServletContainer().init(new WServletConfig());
   }
 
+  /**
+   * 进行用户认证，认证通过则创建对应链接，认证失败则退出
+   * @param request
+   * @param response
+   * @return
+   */
   @Override
   public Object createWebSocket(ServletUpgradeRequest request, ServletUpgradeResponse response) {
     try {

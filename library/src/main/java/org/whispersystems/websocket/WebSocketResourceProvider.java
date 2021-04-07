@@ -103,6 +103,12 @@ public class WebSocketResourceProvider implements WebSocketListener {
     close(session, 1011, "Server error");
   }
 
+  /**
+   * 把接收到的websocket消息映射到http controller上
+   * @param payload
+   * @param offset
+   * @param length
+   */
   @Override
   public void onWebSocketBinary(byte[] payload, int offset, int length) {
     try {

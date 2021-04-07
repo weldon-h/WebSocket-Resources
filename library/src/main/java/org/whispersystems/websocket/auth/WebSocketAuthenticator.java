@@ -16,12 +16,18 @@
  */
 package org.whispersystems.websocket.auth;
 
-import org.eclipse.jetty.server.Authentication;
 import org.eclipse.jetty.websocket.api.UpgradeRequest;
 
 import java.util.Optional;
 
 public interface WebSocketAuthenticator<T> {
+
+  /**
+   * 认证
+   * @param request
+   * @return
+   * @throws AuthenticationException
+   */
   AuthenticationResult<T> authenticate(UpgradeRequest request) throws AuthenticationException;
 
   @SuppressWarnings("OptionalUsedAsFieldOrParameterType")

@@ -24,9 +24,28 @@ public interface WebSocketMessage {
     RESPONSE_MESSAGE
   }
 
+  /**
+   * 消息类型
+   * @return
+   */
   public Type                     getType();
+
+  /**
+   * request message
+   * @return
+   */
   public WebSocketRequestMessage  getRequestMessage();
+
+  /**
+   * response message
+   * @return
+   */
   public WebSocketResponseMessage getResponseMessage();
+
+  /**
+   * 把消息序列化成字节数组
+   * @return
+   */
   public byte[]                   toByteArray();
 
 }

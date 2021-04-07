@@ -190,6 +190,10 @@ public class WebSocketServletResponse implements HttpServletResponse {
     return 0;
   }
 
+  /**
+   * 把response发送到socket中
+   * @throws IOException
+   */
   @Override
   public void flushBuffer() throws IOException {
     if (!isCommitted) {
@@ -199,6 +203,7 @@ public class WebSocketServletResponse implements HttpServletResponse {
         body = null;
       }
 
+      //构建响应内容
       byte[] response = messageFactory.createResponse(responseBuilder.getRequestId(),
                                                       responseBuilder.getStatusCode(),
                                                       responseBuilder.getMessage(),

@@ -25,12 +25,25 @@ import org.whispersystems.websocket.messages.WebSocketResponseMessage;
 
 public class ProtobufWebSocketMessage implements WebSocketMessage {
 
+  /**
+   * protobuf消息对象
+   */
   private final SubProtocol.WebSocketMessage message;
 
+  /**
+   *
+   * 反序列化protobuf字节数组来构建protobuf消息对象
+   * @param buffer
+   * @param offset
+   * @param length
+   * @throws InvalidMessageException
+   */
   ProtobufWebSocketMessage(byte[] buffer, int offset, int length) throws InvalidMessageException {
     try {
+      //反序列化
       this.message = SubProtocol.WebSocketMessage.parseFrom(ByteString.copyFrom(buffer, offset, length));
 
+      //校验消息字段
       if (getType() == Type.REQUEST_MESSAGE) {
         if (!message.getRequest().hasVerb() || !message.getRequest().hasPath()) {
           throw new InvalidMessageException("Missing required request attributes!");

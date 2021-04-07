@@ -35,6 +35,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * 发送消息
+ */
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public class WebSocketClient {
 
@@ -55,6 +58,14 @@ public class WebSocketClient {
     this.pendingRequestMapper = pendingRequestMapper;
   }
 
+  /**
+   * 发送消息
+   * @param verb
+   * @param path
+   * @param headers
+   * @param body
+   * @return
+   */
   public ListenableFuture<WebSocketResponseMessage> sendRequest(String verb, String path,
                                                                 List<String> headers,
                                                                 Optional<byte[]> body)

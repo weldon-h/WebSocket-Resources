@@ -23,14 +23,40 @@ import java.util.Optional;
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public interface WebSocketMessageFactory {
 
+  /**
+   * 解析message
+   * @param serialized
+   * @param offset
+   * @param len
+   * @return
+   * @throws InvalidMessageException
+   */
   public WebSocketMessage parseMessage(byte[] serialized, int offset, int len)
       throws InvalidMessageException;
 
+  /**
+   * 构建request消息
+   * @param requestId
+   * @param verb
+   * @param path
+   * @param headers
+   * @param body
+   * @return
+   */
   public WebSocketMessage createRequest(Optional<Long> requestId,
                                         String verb, String path,
                                         List<String> headers,
                                         Optional<byte[]> body);
 
+  /**
+   * 构建respnse消息
+   * @param requestId
+   * @param status
+   * @param message
+   * @param headers
+   * @param body
+   * @return
+   */
   public WebSocketMessage createResponse(long requestId, int status, String message,
                                          List<String> headers,
                                          Optional<byte[]> body);
